@@ -1,0 +1,309 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║         🛒 MINI MART - VISUAL SETUP GUIDE                            ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│  📍 CURRENT LOCATION: C:\laragon\www\MiniMart                        │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════
+ OPTION 1: AUTOMATED SETUP (RECOMMENDED) ⭐
+══════════════════════════════════════════════════════════════════════
+
+    1. DOUBLE-CLICK FILE
+       ┌─────────────────────┐
+       │  QUICK_START.bat    │  ← Double-click this
+       └─────────────────────┘
+              ↓
+    2. WAIT FOR COMPLETION
+       ┌──────────────────────────────────────────┐
+       │ Creating database...          ✓          │
+       │ Running migrations...         ✓          │
+       │ Seeding data...               ✓          │
+       │ Creating storage link...      ✓          │
+       │ Building assets...            ✓          │
+       │ Clearing caches...            ✓          │
+       └──────────────────────────────────────────┘
+              ↓
+    3. CONFIGURE LARAGON
+       See "LARAGON SETUP" section below
+
+
+══════════════════════════════════════════════════════════════════════
+ OPTION 2: MANUAL SETUP (Step by Step)
+══════════════════════════════════════════════════════════════════════
+
+    Open PowerShell in this folder and run:
+
+    ┌──────────────────────────────────────────────────────────┐
+    │ Step 1: Create Database                                  │
+    ├──────────────────────────────────────────────────────────┤
+    │ mysql -u root -e "CREATE DATABASE minimart_laragon;"     │
+    └──────────────────────────────────────────────────────────┘
+                              ↓
+    ┌──────────────────────────────────────────────────────────┐
+    │ Step 2: Setup Database Tables & Sample Data              │
+    ├──────────────────────────────────────────────────────────┤
+    │ php artisan migrate:fresh --seed --force                 │
+    └──────────────────────────────────────────────────────────┘
+                              ↓
+    ┌──────────────────────────────────────────────────────────┐
+    │ Step 3: Create Storage Link                              │
+    ├──────────────────────────────────────────────────────────┤
+    │ php artisan storage:link                                 │
+    └──────────────────────────────────────────────────────────┘
+                              ↓
+    ┌──────────────────────────────────────────────────────────┐
+    │ Step 4: Build Assets (CSS/JS)                            │
+    ├──────────────────────────────────────────────────────────┤
+    │ npm run build                                            │
+    └──────────────────────────────────────────────────────────┘
+                              ↓
+    ┌──────────────────────────────────────────────────────────┐
+    │ Step 5: Clear Caches                                     │
+    ├──────────────────────────────────────────────────────────┤
+    │ php artisan config:clear                                 │
+    │ php artisan cache:clear                                  │
+    │ php artisan view:clear                                   │
+    └──────────────────────────────────────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════
+ LARAGON SETUP (REQUIRED FOR BOTH OPTIONS)
+══════════════════════════════════════════════════════════════════════
+
+    ┌─────────────────────────────────────────────────────────┐
+    │ 1. Right-click Laragon icon in system tray            │
+    │                                                          │
+    │     [Laragon] ← Right-click                             │
+    │         ↓                                                │
+    │     [Menu]                                               │
+    │         ↓                                                │
+    │     [Apache]                                             │
+    │         ↓                                                │
+    │     [Add Virtual Host]                                   │
+    └─────────────────────────────────────────────────────────┘
+                              ↓
+    ┌─────────────────────────────────────────────────────────┐
+    │ 2. Fill in the form:                                    │
+    │                                                          │
+    │    ┌────────────────────────────────────────────┐       │
+    │    │ Virtual Host Name                          │       │
+    │    │ ┌────────────────────────────────────────┐ │       │
+    │    │ │ minimart.test                          │ │       │
+    │    │ └────────────────────────────────────────┘ │       │
+    │    │                                            │       │
+    │    │ Document Root                              │       │
+    │    │ ┌────────────────────────────────────────┐ │       │
+    │    │ │ C:\laragon\www\MiniMart\public         │ │       │
+    │    │ └────────────────────────────────────────┘ │       │
+    │    │                                            │       │
+    │    │         [ OK ]      [ Cancel ]             │       │
+    │    └────────────────────────────────────────────┘       │
+    └─────────────────────────────────────────────────────────┘
+                              ↓
+    ┌─────────────────────────────────────────────────────────┐
+    │ 3. Laragon will automatically:                          │
+    │    - Update Apache configuration                        │
+    │    - Update hosts file                                  │
+    │    - Restart Apache                                     │
+    └─────────────────────────────────────────────────────────┘
+                              ↓
+    ┌─────────────────────────────────────────────────────────┐
+    │ 4. Start Laragon Services                               │
+    │                                                          │
+    │    Open Laragon Window                                   │
+    │    Click: [ Start All ]                                  │
+    │                                                          │
+    │    Wait for:                                             │
+    │    ✓ Apache (green checkmark)                           │
+    │    ✓ MySQL (green checkmark)                            │
+    └─────────────────────────────────────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════
+ ACCESSING YOUR WEBSITE
+══════════════════════════════════════════════════════════════════════
+
+    ┌──────────────────────────────────────────────────────────┐
+    │                     OPEN BROWSER                         │
+    └──────────────────────────────────────────────────────────┘
+                              ↓
+              ┌───────────────┴───────────────┐
+              ↓                               ↓
+    ┌─────────────────────┐       ┌─────────────────────┐
+    │  CUSTOMER FRONTEND  │       │   ADMIN DASHBOARD   │
+    ├─────────────────────┤       ├─────────────────────┤
+    │                     │       │                     │
+    │ http://minimart     │       │ http://minimart     │
+    │        .test        │       │     .test/admin     │
+    │                     │       │                     │
+    │ • Browse Products   │       │ • Login Required    │
+    │ • Add to Cart       │       │ • Manage Products   │
+    │ • Checkout          │       │ • View Orders       │
+    │ • View Orders       │       │ • Dashboard Stats   │
+    └─────────────────────┘       └─────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════
+ LOGIN CREDENTIALS
+══════════════════════════════════════════════════════════════════════
+
+    ┌──────────────────────────────────────────────────────────┐
+    │ 👨‍💼 ADMIN ACCOUNT                                          │
+    ├──────────────────────────────────────────────────────────┤
+    │                                                          │
+    │   URL:      http://minimart.test/admin                  │
+    │   Email:    admin@minimart.test                         │
+    │   Password: minimart123                                 │
+    │                                                          │
+    │   Access:   Full admin dashboard                        │
+    │            Product management                           │
+    │            Order management                             │
+    │            Category management                          │
+    └──────────────────────────────────────────────────────────┘
+
+    ┌──────────────────────────────────────────────────────────┐
+    │ 👤 TEST CUSTOMER ACCOUNT                                 │
+    ├──────────────────────────────────────────────────────────┤
+    │                                                          │
+    │   URL:      http://minimart.test/login                  │
+    │   Email:    customer@minimart.test                      │
+    │   Password: password                                    │
+    │                                                          │
+    │   Access:   Shop products                               │
+    │            Add to cart                                  │
+    │            Checkout                                     │
+    │            View own orders                              │
+    └──────────────────────────────────────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════
+ WHAT YOU SHOULD SEE
+══════════════════════════════════════════════════════════════════════
+
+    HOMEPAGE (http://minimart.test)
+    ┌──────────────────────────────────────────────────────────┐
+    │ [Logo] Mini Mart     Home Shop Cart(0) Login            │
+    ├──────────────────────────────────────────────────────────┤
+    │                                                          │
+    │        Your Neighborhood Mini Mart                       │
+    │             Fresh & Fast                                 │
+    │                                                          │
+    │            [ Shop Now ]                                  │
+    ├──────────────────────────────────────────────────────────┤
+    │                Shop by Category                          │
+    │  ┌────┐  ┌────┐  ┌────┐  ┌────┐  ┌────┐  ┌────┐      │
+    │  │ 🍎 │  │ 🍿 │  │ 🥛 │  │ 🍞 │  │ 🧹 │  │ 🧴 │      │
+    │  └────┘  └────┘  └────┘  └────┘  └────┘  └────┘      │
+    ├──────────────────────────────────────────────────────────┤
+    │                Today's Specials                          │
+    │  [Product] [Product] [Product] [Product]                │
+    │  [Product] [Product] [Product] [Product]                │
+    └──────────────────────────────────────────────────────────┘
+
+    ADMIN DASHBOARD (http://minimart.test/admin)
+    ┌──────────────────────────────────────────────────────────┐
+    │ 🛒 Mini Mart Admin                                       │
+    ├────────────┬─────────────────────────────────────────────┤
+    │ 📊 Dashboard│            Dashboard                       │
+    │ 📦 Products│  ┌────────┐ ┌────────┐ ┌────────┐          │
+    │ 📁 Categories│  │Today's │ │Today's │ │Total   │          │
+    │ 🛍️ Orders  │  │Orders  │ │Sales   │ │Products│          │
+    │ 🏠 View Store│  │   5    │ │ $120   │ │  16    │          │
+    │            │  └────────┘ └────────┘ └────────┘          │
+    │ Logout     │                                             │
+    │            │  Recent Orders                              │
+    │            │  [Order list table...]                      │
+    └────────────┴─────────────────────────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════
+ TROUBLESHOOTING FLOWCHART
+══════════════════════════════════════════════════════════════════════
+
+    Is site loading?
+         │
+         ├─ NO → Is Laragon running?
+         │           │
+         │           ├─ NO → Start Laragon
+         │           │       Click "Start All"
+         │           │
+         │           └─ YES → Is virtual host configured?
+         │                       │
+         │                       ├─ NO → Add virtual host
+         │                       │       (see steps above)
+         │                       │
+         │                       └─ YES → Check URL
+         │                               Use: minimart.test
+         │                               Not: localhost
+         │
+         └─ YES → Styles missing?
+                     │
+                     ├─ YES → Run: npm run build
+                     │         Run: php artisan view:clear
+                     │
+                     └─ NO → Database error?
+                                 │
+                                 ├─ YES → Run QUICK_START.bat
+                                 │
+                                 └─ NO → Everything works! ✓
+
+
+══════════════════════════════════════════════════════════════════════
+ SAMPLE DATA INCLUDED
+══════════════════════════════════════════════════════════════════════
+
+    ✓ 2 Users (1 admin, 1 customer)
+    ✓ 6 Categories
+    ✓ 16 Products with realistic names and prices
+    ✓ All ready to use immediately
+
+
+══════════════════════════════════════════════════════════════════════
+ NEED MORE HELP?
+══════════════════════════════════════════════════════════════════════
+
+    📄 START_HERE.txt           ← Simple instructions
+    📄 RUN_ALL_COMMANDS.md      ← All commands with explanations
+    📄 SETUP_GUIDE.md           ← Complete detailed guide
+    📄 README.md                ← Project overview
+    📄 TROUBLESHOOTING below    ← Common issues
+
+
+══════════════════════════════════════════════════════════════════════
+ QUICK COMMANDS REFERENCE
+══════════════════════════════════════════════════════════════════════
+
+    Reset Everything:
+    php artisan migrate:fresh --seed --force
+
+    Clear All Caches:
+    php artisan optimize:clear
+
+    Rebuild Assets:
+    npm run build
+
+    Check Database:
+    mysql -u root -e "USE minimart_laragon; SHOW TABLES;"
+
+    View Logs:
+    Get-Content storage\logs\laravel.log -Tail 50
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║                  🎉 YOU'RE READY TO GO! 🛒                           ║
+║                                                                      ║
+║     1. Run QUICK_START.bat                                           ║
+║     2. Configure virtual host in Laragon                             ║
+║     3. Start Laragon                                                 ║
+║     4. Visit http://minimart.test                                    ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝

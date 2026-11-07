@@ -1,0 +1,157 @@
+╔════════════════════════════════════════════════════════════╗
+║                                                            ║
+║           🛒 MINI MART - HOW TO RUN IT                     ║
+║                                                            ║
+╚════════════════════════════════════════════════════════════╝
+
+
+📍 YOU ARE HERE: C:\laragon\www\MiniMart
+
+
+🚀 FASTEST WAY TO RUN (3 Steps):
+═══════════════════════════════════════════════════════════
+
+  1️⃣  DOUBLE-CLICK THIS FILE:
+      
+      📁 QUICK_START.bat
+      
+      ↓ It will automatically:
+        - Create database
+        - Setup tables
+        - Add sample products
+        - Build website files
+
+
+  2️⃣  CONFIGURE VIRTUAL HOST:
+      
+      - Right-click Laragon icon (system tray)
+      - Menu → Apache → Add Virtual Host
+      
+      Enter these:
+      ┌─────────────────────────────────────────┐
+      │ Name: minimart.test                     │
+      │ Path: C:\laragon\www\MiniMart\public    │
+      └─────────────────────────────────────────┘
+      
+      - Click OK
+      - Laragon restarts automatically
+
+
+  3️⃣  START LARAGON:
+      
+      - Open Laragon
+      - Click "Start All"
+      - Wait for green checkmarks ✓
+
+
+🌐 OPEN YOUR BROWSER:
+═══════════════════════════════════════════════════════════
+
+  Frontend (Customer):  http://minimart.test
+  
+  Admin Dashboard:      http://minimart.test/admin
+
+
+🔐 LOGIN CREDENTIALS:
+═══════════════════════════════════════════════════════════
+
+  👨‍💼 Admin Account:
+     Email:    admin@minimart.test
+     Password: minimart123
+  
+  👤 Test Customer:
+     Email:    customer@minimart.test
+     Password: password
+
+
+✅ WHAT YOU SHOULD SEE:
+═══════════════════════════════════════════════════════════
+
+  Homepage:
+  ├── Hero: "Your Neighborhood Mini Mart"
+  ├── 6 Category Cards
+  ├── Featured Products
+  └── Store Information
+  
+  Admin:
+  ├── Login Screen
+  ├── Dashboard with Stats
+  ├── Product Management
+  └── Order Management
+
+
+❓ TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════
+
+  ❌ Site not loading?
+     → Check Laragon is running (green checkmarks)
+     → Verify virtual host is configured
+     → Try: http://127.0.0.1 (should show Laragon page)
+  
+  ❌ Database error?
+     → Run QUICK_START.bat again
+  
+  ❌ No styles (plain HTML)?
+     → Open PowerShell here, type: npm run build
+
+
+📚 DETAILED GUIDES:
+═══════════════════════════════════════════════════════════
+
+  📄 RUN_ALL_COMMANDS.md       - All commands step-by-step
+  📄 SETUP_GUIDE.md            - Complete setup guide
+  📄 README.md                 - Project overview
+  📄 FEATURES.md               - All features explained
+
+
+💡 QUICK TIPS:
+═══════════════════════════════════════════════════════════
+
+  • Laragon must be running (Apache + MySQL)
+  • Virtual host must point to the "public" folder
+  • Use .test domain (minimart.test)
+  • Admin has full access, customer can only shop
+
+
+🆘 NEED MORE HELP?
+═══════════════════════════════════════════════════════════
+
+  1. Read: RUN_ALL_COMMANDS.md (detailed steps)
+  2. Check: CHECKLIST.md (verify everything)
+  3. Run: QUICK_START.bat again (resets everything)
+
+
+╔════════════════════════════════════════════════════════════╗
+║                                                            ║
+║        🎉 YOUR MINI MART IS READY TO GO! 🛒                ║
+║                                                            ║
+║     Just run QUICK_START.bat and configure Laragon!       ║
+║                                                            ║
+╚════════════════════════════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════
+SUMMARY OF INCLUDED SAMPLE DATA:
+═══════════════════════════════════════════════════════════
+
+Categories (6):
+  🍎 Fruits & Vegetables
+  🍿 Snacks & Drinks
+  🥛 Dairy & Eggs
+  🍞 Bread & Pastries
+  🧹 Household Essentials
+  🧴 Personal Care
+
+Products (16):
+  Fresh Bananas, Red Apples, Tomatoes, Cola, Chips,
+  Orange Juice, Milk, Eggs, Cheese, Bread, Croissants,
+  Dish Soap, Toilet Paper, Hand Soap, Toothpaste, Shampoo
+
+Users (2):
+  Admin + Test Customer (see credentials above)
+
+
+═══════════════════════════════════════════════════════════
+
+
+                    Happy Selling! 🛒✨
