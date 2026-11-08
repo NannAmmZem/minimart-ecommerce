@@ -53,6 +53,18 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('products', AdminProductController::class);
     Route::patch('/products/{product}/stock', [AdminProductController::class, 'updateStock'])->name('products.stock');
     
+    // POS Routes
+    Route::get('/pos', [App\Http\Controllers\Admin\PosController::class, 'index'])->name('pos.index');
+    Route::get('/pos/search', [App\Http\Controllers\Admin\PosController::class, 'searchProducts'])->name('pos.search');
+    Route::post('/pos/process', [App\Http\Controllers\Admin\PosController::class, 'processSale'])->name('pos.process');
+    Route::get('/pos/product/{id}', [App\Http\Controllers\Admin\PosController::class, 'getProduct'])->name('pos.product');
+    Route::post('/pos/stock-updates', [App\Http\Controllers\Admin\PosController::class, 'getStockUpdates'])->name('pos.stock');
+    Route::get('/pos/receipt/{order}', [App\Http\Controllers\Admin\PosController::class, 'printReceipt'])->name('pos.receipt');
+    Route::get('/pos/stats', [App\Http\Controllers\Admin\PosController::class, 'getStats'])->name('pos.stats');
+    Route::post('/pos/hold', [App\Http\Controllers\Admin\PosController::class, 'holdTransaction'])->name('pos.hold');
+    Route::get('/pos/held', [App\Http\Controllers\Admin\PosController::class, 'getHeldTransactions'])->name('pos.held');
+    Route::get('/pos/resume/{holdName}', [App\Http\Controllers\Admin\PosController::class, 'resumeTransaction'])->name('pos.resume');
+    
     // Orders
     Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
