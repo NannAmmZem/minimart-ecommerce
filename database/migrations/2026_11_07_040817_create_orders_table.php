@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('order_number')->unique();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->decimal('total_amount', 10, 2);
-            $table->enum('status', ['pending', 'confirmed', 'out_for_delivery', 'delivered', 'cancelled'])->default('pending');
-            $table->enum('payment_method', ['cash_on_delivery', 'bank_transfer']);
+            // Changed from enum to string for PostgreSQL compatibility
+            $table->string('status', 50)->default('pending'); // pending, confirmed, out_for_delivery, delivered, cancelled
+            $table->string('payment_method', 50); // cash_on_delivery, bank_transfer
             $table->text('delivery_address');
             $table->string('phone_number');
             $table->string('delivery_time_slot')->nullable();
